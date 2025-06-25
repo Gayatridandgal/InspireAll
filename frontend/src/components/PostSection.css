@@ -1,0 +1,52 @@
+.post-section {
+  padding: 20px;
+  background: #1a1a1a;
+  color: white;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.post {
+  background: #262626;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.actions button {
+  background: #4ade80;
+  margin-top: 5px;
+}
+
+.comments input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.post-warning {
+  padding: 20px;
+  background-color: #ffefc2;
+  color: #333;
+  border-radius: 8px;
+  margin: 20px;
+}

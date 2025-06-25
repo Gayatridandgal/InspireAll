@@ -1,0 +1,225 @@
+/* Resource.css */
+.resource-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  border-color: #374151;
+}
+
+.resource-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+  background: #0a0a0a;
+}
+
+.resource-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  filter: brightness(0.8);
+}
+
+.resource-card:hover .resource-image {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+.resource-type-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.type-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2;
+}
+
+.resource-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+}
+
+.resource-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.resource-description {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.resource-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.resource-category {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  background: #374151;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4f46e5;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #4f46e5;
+  background: transparent;
+}
+
+.resource-link:hover {
+  background: #4f46e5;
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.link-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2;
+  transition: transform 0.2s ease;
+}
+
+.resource-link:hover .link-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Card variants for different types */
+.resource-card[data-type="Guide"] .resource-type-badge {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.resource-card[data-type="Course"] .resource-type-badge {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+}
+
+.resource-card[data-type="Article"] .resource-type-badge {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #a855f7;
+}
+
+/* Loading state */
+.resource-card.loading {
+  pointer-events: none;
+}
+
+.resource-card.loading .resource-image {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .resource-content {
+    padding: 1.25rem;
+    height: auto;
+    min-height: 180px;
+  }
+
+  .resource-title {
+    font-size: 1.125rem;
+  }
+
+  .resource-description {
+    font-size: 0.8125rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .resource-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .resource-link {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .resource-image-container {
+    height: 200px;
+  }
+
+  .resource-content {
+    padding: 1rem;
+  }
+
+  .resource-title {
+    font-size: 1rem;
+    -webkit-line-clamp: 2;
+  }
+}
