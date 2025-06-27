@@ -1,26 +1,27 @@
 /* src/index.css */
 /* <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" /> */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --card: #ffffff;
-  --card-foreground: #0a0a0a;
-  --popover: #ffffff;
-  --popover-foreground: #0a0a0a;
-  --primary: #1a1a1a;
-  --primary-foreground: #fafafa;
-  --secondary: #f4f4f4;
-  --secondary-foreground: #1a1a1a;
-  --muted: #f4f4f4;
-  --muted-foreground: #757575;
-  --accent: #f4f4f4;
-  --accent-foreground: #1a1a1a;
-  --destructive: #e53e3e;
-  --destructive-foreground: #fafafa;
-  --border: #e5e5e5;
-  --input: #e5e5e5;
-  --ring: #1a1a1a;
+  --background: #f8f5ee; /* Soft, warm background */
+  --foreground: #3a3a3a; /* Darker text for readability */
+  --card: #ffffff; /* Clean card background */
+  --card-foreground: #3a3a3a; /* Card text color */
+  --popover: #ffffff; /* Popover background */
+  --popover-foreground: #3a3a3a; /* Popover text color */
+  --primary: #5a8d4e; /* Primary action color (earthy green) */
+  --primary-foreground: #ffffff; /* White text for primary buttons */
+  --secondary: #f1e8d6; /* Secondary background (light tan) */
+  --secondary-foreground: #3a3a3a; /* Secondary text color */
+  --muted: #e0d9c5; /* Muted elements background */
+  --muted-foreground: #6b6b6b; /* Muted text color */
+  --accent: #f1e8d6; /* Accent background */
+  --accent-foreground: #3a3a3a; /* Accent text color */
+  --destructive: #d9534f; /* Destructive action color (red) */
+  --destructive-foreground: #ffffff; /* White text for destructive buttons */
+  --border: #d1c5af; /* Border color (subtle) */
+  --input: #ffffff; /* Input field background */
+  --ring: #5a8d4e; /* Focus ring color */
   --radius: 8px;
 }
 
@@ -28,7 +29,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--background);
-  color: var(--foreground);
+  color: var(--foreground); /* Use the new foreground color */
   font-family: sans-serif;
 }
 
@@ -86,9 +87,9 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #0d1117;
-  color: white;
+  font-family: 'Roboto', sans-serif; /* Use Roboto font */
+  background-color: var(--background); /* Use CSS variable */
+  color: var(--foreground); /* Use CSS variable */
 }
 
 /* Wrapper */
@@ -97,7 +98,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: #0d1117;
+  background-color: var(--background); /* Use CSS variable */
 }
 
 /* Heading */
@@ -110,7 +111,7 @@ body {
 /* Description */
 .description {
   font-size: 1.25rem;
-  color: #d1d5db;
+  color: var(--muted-foreground); /* Use CSS variable */
   margin-bottom: 2rem;
 }
 
@@ -126,22 +127,19 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  color: white;
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Add opacity transition */
+  color: var(--primary-foreground); /* Use CSS variable */
 }
 
 .btn-purple {
-  background-color: #7c3aed;
-}
-
-.btn-purple:hover {
-  background-color: #6d28d9;
+  background-color: var(--primary); /* Use CSS variable */
 }
 
 .btn-green {
-  background-color: #238636;
+  background-color: var(--primary); /* Use CSS variable */
 }
 
-.btn-green:hover {
-  background-color: #2ea043;
+/* General button hover effect */
+.btn:hover {
+  opacity: 0.9; /* Slightly reduce opacity on hover */
 }
