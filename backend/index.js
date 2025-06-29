@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const SALT_ROUNDS = 10;
+const app = express();
 
 
 // Middleware
