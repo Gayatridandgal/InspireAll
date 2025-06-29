@@ -6,8 +6,6 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 const app = express();
 
-
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
