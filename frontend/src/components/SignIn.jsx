@@ -12,7 +12,7 @@ function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
-  const { login } = useAuth(); // 👈 import login function
+  const { login } = useAuth(); // From context
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,18 +21,20 @@ function SignIn() {
 
     try {
       const res = await axios.post("http://localhost:5000/login", { email, password });
+
       const { role, name, email: userEmail } = res.data;
 
-      // 👇 Save user data to context
+      // Save in context (if needed)
       login({ role, name, email: userEmail });
 
-      if (role === "investor") {
-        navigate("/profiles/InvestorProfile");
-      } else if (role === "entrepreneur") {
-        navigate("/profiles/EntrepreneurProfile");
-      } else {
-        navigate("/Mainpage");
-      }
+      // Save in localStorage
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userRole", role);
+
+      console.log("Login successful. Redirecting to MainPage...");
+navigate("/MainPage");
+
+
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed. Check credentials.";
       setErrorMessage(msg);
@@ -45,6 +47,7 @@ function SignIn() {
     <div className="SignIn-page">
       <h1>Sign in to Continue Your Learning Journey</h1>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
+      
       <form onSubmit={handleSubmit} className="login-form">
         <label>Email</label>
         <input

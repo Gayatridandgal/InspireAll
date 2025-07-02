@@ -25,19 +25,21 @@ function Headertwo() {
           <span className="logo-all">All</span>
         </span>
       </Link>
+      <div className="translate-section">
+        <GoogleTranslate />
+      </div>
 
       <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/profiles/EntrepreneurProfile">Profile</Link>
+       
         <Link to="/BusinessInfo">Business Info</Link>
         <Link to="/resources">Resources</Link>
         <Link to="/post">Post</Link>   
         <Link to="/SchemeSearchForm">Schemes</Link>
+         <Link to="/profiles/EntrepreneurProfile">Profile</Link>
         <button onClick={handleLogout} className="logout-btn">Logout</button> {/* 👈 logout */}
       </nav>
 
-      <div className="translate-section">
-        <GoogleTranslate />
-      </div>
+      
 
       <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
         <div className="bar"></div>

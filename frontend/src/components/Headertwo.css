@@ -206,3 +206,23 @@
   .translate-section .goog-te-combo:focus {
     background: #23232b;
   }
+
+  
+   .logout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+     background: linear-gradient(90deg, #252329 60%, #1b1941 100%);
+    color: #fff;
+    border: none;
+    
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 300;
+    box-shadow: 0 2px 8px 0 rgba(147, 112, 206, 0.1);
+    transition: background 0.2s, color 0.2s;
+  
+ 
+}

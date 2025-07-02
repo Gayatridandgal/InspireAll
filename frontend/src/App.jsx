@@ -15,6 +15,8 @@ import SchemeSearchForm from "./components/SchemeSearchForm";
 import EntrepreneurProfile from "./components/profiles/EntrepreneurProfile";
 import InvestorProfile from "./components/profiles/InvestorProfile";
 import Resources from "./pages/Resources";
+import MainPage from "./components/MainPage"; 
+
 
 const App = () => {
   return (
@@ -39,6 +41,8 @@ const App = () => {
         <Route path="/profiles/EntrepreneurProfile" element={<EntrepreneurProfile />} />
         <Route path="/profiles/InvestorProfile" element={<InvestorProfile />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/MainPage" element={<MainPage />} />
+
       </Routes>
     </Layout>
   );

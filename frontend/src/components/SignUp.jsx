@@ -78,11 +78,13 @@ localStorage.setItem('isAuthenticated', 'true');
   localStorage.setItem("isAuthenticated", "true");  // ✅ ADD THIS
   alert("Signup successful!");
   generateCaptcha();
-  navigate(
-    role === "investor"
-      ? "/profiles/InvestorProfile"
-      : "/profiles/EntrepreneurProfile"
-  );
+  // navigate(
+  //   role === "investor"
+  //     ? "/profiles/InvestorProfile"
+  //     : "/profiles/EntrepreneurProfile"
+  // );
+  navigate("/SignIn");
+
 }
 else {
         setErrorMessage("Signup failed: " + result);
