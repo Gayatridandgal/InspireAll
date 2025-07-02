@@ -47,10 +47,26 @@
   
   .logo-all {
     /* color: #6b21a8;  */
-    color: rgb(255, 255, 255);
+    color: white;
 
   }
 
+  .nav-links {
+    display: flex;
+    gap: 32px; /* Space between links */
+    margin-left: auto; /* Push links to the right */
+    margin-right: 30px; /* Space between links and Sign in/Sign up */
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .nav-links a:hover {
+    color: #ccc;
+  }
   
   .desktop-auth {
     display: flex;
@@ -151,7 +167,7 @@
     .translate-section {
       margin: 10px 0;
       width: 90vw;
-      justify-content: right;
+      justify-content: center;
       height: auto;
       background: #18181b;
     }

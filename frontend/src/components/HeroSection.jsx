@@ -19,12 +19,12 @@ function HeroSection() {
       </div>
     </div>
   
-    <div class="hero-image">
+    {/* <div class="hero-image">
     <img
           src="https://static.startuptalky.com/2023/12/Rural-Business-Ideas-1.jpg"
           alt="Hero"
-          className="image-animation"
-        />    </div>
+        
+        />    </div> */}
   </section>
   
   );

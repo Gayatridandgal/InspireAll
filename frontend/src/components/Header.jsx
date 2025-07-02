@@ -1,7 +1,8 @@
+// src/components/Header.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import logo from '/loo.png'; // Ensure this path is correct
+import logo from '/loo.png';
 import GoogleTranslate from './GoogleTranslate';
 
 function Header() {
@@ -17,18 +18,6 @@ function Header() {
         </span>
       </Link>
 
-      <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/profiles/EntrepreneurProfile">Profile</Link>
-        <Link to="/BusinessInfo">Business Info</Link>
-        <a href="http://localhost:5173/" target="_blank" rel="noopener noreferrer">Post</a>
-        <Link to="/SchemeSearchForm">Schemes</Link>
-        {/* <Link to="/resource">Resources</Link>
-        import { Link } from 'react-router-dom'; */}
-
-<Link to="/resources" className="text-white hover:underline">Resources</Link>
-
-      </nav>
-
       <div className="translate-section">
         <GoogleTranslate />
       </div>
@@ -40,7 +29,6 @@ function Header() {
         <Link to="/SignUp">
           <button className="signup-btn">Sign up</button>
         </Link>
-      
       </div>
 
       <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>

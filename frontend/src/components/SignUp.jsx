@@ -19,9 +19,10 @@ const SignUp = () => {
   useEffect(() => {
     generateCaptcha();
   }, []);
-
+localStorage.setItem('isAuthenticated', 'true');
   const generateCaptcha = () => {
-    setCaptcha(Math.floor(1000 + Math.random() * 9000).toString());
+    const newCaptcha = Math.floor(1000 + Math.random() * 9000).toString();
+    setCaptcha(newCaptcha);
   };
 
   const validatePassword = (password) => {
@@ -41,7 +42,8 @@ const SignUp = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -50,7 +52,7 @@ const SignUp = () => {
 
     const { name, email, password, userCaptcha, role } = formData;
 
-    if (!name || !email || !password || !userCaptcha || !role) {
+    if (!name || !email || !password || !userCaptcha || role === "Select Role") {
       setErrorMessage("All fields are required.");
       return;
     }
@@ -73,15 +75,16 @@ const SignUp = () => {
       const result = await res.text();
 
       if (res.ok) {
-        alert("Signup successful!");
-        generateCaptcha();
-        navigate(
-  role === "investor"
-    ? "/profiles/InvestorProfile"
-    : "/profiles/EntrepreneurProfile"
-);
-
-      } else {
+  localStorage.setItem("isAuthenticated", "true");  // ✅ ADD THIS
+  alert("Signup successful!");
+  generateCaptcha();
+  navigate(
+    role === "investor"
+      ? "/profiles/InvestorProfile"
+      : "/profiles/EntrepreneurProfile"
+  );
+}
+else {
         setErrorMessage("Signup failed: " + result);
         generateCaptcha();
       }
@@ -97,14 +100,28 @@ const SignUp = () => {
       <form onSubmit={handleSubmit} className="signup-form">
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-        <label>Name</label>
-        <input name="name" value={formData.name} onChange={handleChange} required />
-
-        <label>Email</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-
-        <label>Password</label>
+        <label htmlFor="name">Name</label>
         <input
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
           type="password"
           name="password"
           value={formData.password}
@@ -113,8 +130,11 @@ const SignUp = () => {
           required
         />
 
-        <label>CAPTCHA: <strong>{captcha}</strong></label>
+        <label htmlFor="captcha">
+          CAPTCHA: <strong>{captcha}</strong>
+        </label>
         <input
+          id="captcha"
           name="userCaptcha"
           value={formData.userCaptcha}
           onChange={handleChange}
@@ -122,37 +142,38 @@ const SignUp = () => {
           required
         />
 
-        <RoleSelector formData={formData} handleChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="role" className="form-label">
+            I am a... <span className="required">*</span>
+          </label>
+          <div className="select-wrapper">
+            <select
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="form-select"
+              required
+            >
+              <option value="Select Role" disabled>
+                Select your role
+              </option>
+              <option value="entrepreneur">🚀 Entrepreneur</option>
+              <option value="investor">💼 Investor</option>
+            </select>
+          </div>
+        </div>
 
         <button type="submit">Sign Up</button>
       </form>
 
       <div className="login-link">
-        <p>Already have an account? <Link to="/SignIn">Sign In</Link></p>
+        <p>
+          Already have an account? <Link to="/SignIn">Sign In</Link>
+        </p>
       </div>
     </div>
   );
 };
-
-const RoleSelector = ({ formData, handleChange }) => (
-  <div className="form-group">
-    <label htmlFor="role" className="form-label">
-      I am a... <span className="required">*</span>
-    </label>
-    <div className="select-wrapper">
-      <select
-        id="role"
-        name="role"
-        value={formData.role}
-        onChange={handleChange}
-        className="form-select"
-        required
-      >
-        <option value="entrepreneur">🚀 Entrepreneur</option>
-        <option value="investor">💼 Investor</option>
-      </select>
-    </div>
-  </div>
-);
 
 export default SignUp;
