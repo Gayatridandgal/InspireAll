@@ -1,7 +1,3 @@
-#  InspireAll
-
-## Multilingual Full-Stack Platform for Rural Empowerment
----
 
 
 ### 🧭 Introduction
